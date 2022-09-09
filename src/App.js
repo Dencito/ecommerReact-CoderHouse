@@ -1,11 +1,13 @@
 import NavBar from './components/nav/NavBar'
-//import Main from './components/main/Main'
+import ItemListContainer from './components/main/ItemListContainer'
 
 function App() {
   return (
     <>
       <NavBar/>
-      {/* <Main/> */}
+      <ItemListContainer 
+        text="hola testt"
+      />
     </>
   );
 }
