@@ -1,8 +1,6 @@
 *{
     margin: 0;
     box-sizing: border-box;
-
-    /* cambiar el estilo por defecto de la barra de scroll */
 }
 html{
     scroll-behavior: smooth;
@@ -21,4 +19,18 @@ html{
     border-radius: 10px;
     background-color: #000000;
     background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent)
+}
+
+.item {
+    text-decoration: none;
+    color: #000000;
+}
+.item:hover {
+    color: #ffffff;
+    background-color: rgb(167, 167, 167);
+    transition: all .4s;
+}
+.item span:nth-child(3){
+    font-weight: bold;
+    color: #d400ff;
 }

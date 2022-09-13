@@ -1,7 +1,8 @@
-import React from 'react'
-import NavBar from '../components/nav/NavBar'
-import ItemListContainer from '../components/main/ItemListContainer'
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import React from 'react';
+import NavBar from '../components/nav/NavBar';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+/* import ItemDetailsContainer from '../components/main/ItemDetailsContainer'; */
+import ItemListContainer from '../components/main/ItemListContainer';
 
 const Home = () => {
   return (
@@ -9,12 +10,11 @@ const Home = () => {
     <BrowserRouter>
         <NavBar/>
         <Routes>
-            <Route path="/" element={<ItemListContainer title="Juegos"/>} />
-            <Route path="/categorias" element={<ItemListContainer title="Juegos"/>} />
-            <Route path="/categorias/carreras" element={<ItemListContainer title="Carreras"/>} />
-            <Route path="/categorias/accion" element={<ItemListContainer title="Accion"/>} />
-            <Route path="/categorias/aventuras" element={<ItemListContainer title="Aventuras"/>} />
-            <Route path="/categorias/un_jugador" element={<ItemListContainer title="Solo un jugador"/>} />
+            <Route path="/" element={<ItemListContainer/>} />
+            <Route path="/categorias/:id" element={<ItemListContainer/>} />
+{/*             <Route path="/categorias/aventuras" element={<ItemList title="Aventuras"/>} />
+            <Route path="/categorias/accion" element={<ItemList title="Accion"/>} />
+            <Route path="/categorias/un_jugador" element={<ItemList title="Solo un jugador"/>} /> */}
         </Routes>
     </BrowserRouter>
     </>
