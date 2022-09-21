@@ -11,7 +11,7 @@ const ItemListContainer = () => {
         const getData = new Promise(resolve => {
             setTimeout(()=>{
                 resolve(Products)
-            },1000)
+            },2000)
         });
         if(categoryId){
             getData.then(res => setData(res.filter(game => game.category === categoryId)))
