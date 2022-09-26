@@ -18,17 +18,6 @@ const addGame = (item, qty) => {
     } else {
       setCart([...cart, {...item, qty}]);
     }
-  
-  /* let newCart;
-  let product = cart.find(product => product.id === item.id);
-  if(product) {
-    product.qty += qty;
-    newCart = [...cart];
-  } else {
-    product = {...item, qty: qty};
-    newCart = [...cart, product];
-  }
-  setCart(newCart); */
 }
 
   console.log('carrito', cart)
