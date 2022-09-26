@@ -1,6 +1,6 @@
-import React from 'react'
-
+import React from 'react';
 const cartWidget = () => {
+
   return (
     <>
       <i className='fa fa-shopping-bag fs-2  me-1'></i>
