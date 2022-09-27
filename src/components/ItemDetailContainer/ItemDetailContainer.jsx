@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     const getData = new Promise(resolve => {
       setTimeout(()=>{
         resolve(Products)
-      }, 2000)
+      }, 300)
     });
     getData.then(res => SetData(res.find(game => game.id === parseInt(detailId))));
   }, [detailId])

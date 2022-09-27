@@ -20,6 +20,14 @@ const addGame = (item, qty) => {
     }
 }
 
+  const totalP = () => {
+    return cart.reduce((prev, act)=> prev + act.qty * act.price, 0);
+  }
+  
+  const totalProducts = () => cart.reduce((acu, prodActual)=> acu + prodActual.qty, 0);
+  
+  console.log(cart.length)
+
   console.log('carrito', cart)
 
   const clear = ()=> setCart([]);
@@ -29,7 +37,15 @@ const addGame = (item, qty) => {
   const removeGame = (id) => setCart(cart.filter(prod => prod.id !== id));
 
   return (
-    <CartContext.Provider value={{clear, isInCart, removeGame, addGame}}>
+    <CartContext.Provider value={{
+        clear,
+        isInCart,
+        removeGame,
+        addGame,
+        totalP,
+        totalProducts,
+        cart
+      }}>
         {children}
     </CartContext.Provider>
   )

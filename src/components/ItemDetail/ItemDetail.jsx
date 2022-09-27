@@ -31,7 +31,7 @@ const ItemDetail = ({data=[]}) => {
                 <div className="col mx-auto">
                 {
                     viewCart
-                    ? <Link to='/cart' className='btn btn-success'>Ver tu carrito</Link>
+                    ? <Link to='/cart' className='btn btn-success'>Terminar mi compra</Link>
                     : <ItemCount initial={1} stock={data.stock} onAdd={onAdd}/>
                 }
                 </div>
