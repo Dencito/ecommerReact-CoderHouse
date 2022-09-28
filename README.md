@@ -1,11 +1,10 @@
-# GamesShop - Proyecto Final para el curso de React.js (2022)
+# 🚀GamesShop - Proyecto Final para el curso de React.js (2022)
 
 GamesShop es un ecommerce de juegos digitales conectada con firebase donde alojamos todos los datos necesarios para el correcto funcionamiento del proyecto.
 Permite seleccionar ciertos productos, navegar a sus detalles, agregarlos al carrito, poder acceder a él, simular la compra de los productos.
 Al clickear sobre el botón "realizar compra", pide llenar un formulario con datos básicos y luego de confirmar se genera un id de orden para el usuario y en firebase se guarda la orden con los productos que compró.
 
-# Tecnologías y librerías:
-
+# 💻Tecnologías y librerías:
 ° Interfaz realizada con ReactJS - Create React App
 ° Estilos con Bootstrap, Bootstrap Icons
 ° Ruteo con React Router DOM
