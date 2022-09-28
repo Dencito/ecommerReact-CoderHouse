@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList';
-import { Products } from '../DataBase/Products';
 import { useParams } from 'react-router-dom';
+
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore'
 
 
 const ItemListContainer = () => {
     const [data, setData] = useState([]);
     const {categoryId} = useParams();
-    useEffect(()=>{
+
+    
+  useEffect(()=>{
+    const queryDb = getFirestore();
+    const queryCollection = collection(queryDb, 'Products');
+    if(categoryId){
+      const queryFilter = query(queryCollection,where('category', '==', categoryId))
+      getDocs(queryFilter)
+        .then(res => setData(res.docs.map(prod => ({id: prod.id, ...prod.data()}) )/* {id: res.id, ...res.data()} */))
+    } else {
+      getDocs(queryCollection)
+        .then(res => setData(res.docs.map(prod => ({id: prod.id, ...prod.data()}) )/* {id: res.id, ...res.data()} */))
+    }
+  },[categoryId])
+/*     useEffect(()=>{
         const getData = new Promise(resolve => {
             setTimeout(()=>{
                 resolve(Products)
@@ -18,7 +33,7 @@ const ItemListContainer = () => {
         } else {
             getData.then(res => setData(res))
         }
-    },[categoryId])
+    },[categoryId]) */
 
   return (
     <>

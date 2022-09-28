@@ -27,10 +27,18 @@ html{
 }
 .item:hover {
     color: #ffffff;
-    background-color: rgb(167, 167, 167);
+    background-color: rgb(190, 190, 190);
     transition: all .4s;
 }
 .item span:nth-child(3){
     font-weight: bold;
-    color: #ff0000;
+    color: #66ff00;
+}
+
+.border-circle-btn {
+    background-color: #dfdfdf;
+    border: none;
+    border-radius: 50%;
+    padding: 3px;
+
 }

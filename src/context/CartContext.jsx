@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-
+import swal from 'sweetalert';
 const CartContext = React.createContext([]);
 
 export const useCartContext = ()=> useContext(CartContext);
@@ -30,7 +30,41 @@ const addGame = (item, qty) => {
 
   console.log('carrito', cart)
 
-  const clear = ()=> setCart([]);
+  const clear = ()=>{ 
+
+    swal({
+      title: 'Vaciar Carrito',
+      text: '¿Estas seguro de vaciar el carrito?',
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        setCart([])
+        swal('Carrito Vaciado', {
+          icon: "success",
+        });
+      } else {
+        swal('El carrito no se vacio!');
+      }
+    });
+
+    /* swal({
+      title: 'Vaciar Carrito',
+      text: '¿Estas seguro de vaciar el carrito?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, seguro',
+      cancelButtonText: 'No, no quiero'
+  }).then((result)=>{
+      if(result.isConfirmed){
+          setCart([])
+          swal('Carrito Vaciado','','success')
+      }
+  }) */
+  
+  /* setCart([]) */};
 
   const isInCart = (id) => cart.find(game => game.id === id) ? true : false;
 
