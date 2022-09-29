@@ -22,10 +22,10 @@ const ItemDetail = ({data=[]}) => {
         </div>
         <div className="row mx-auto d-flex flex-wrap">
             <div className="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-3 mx-auto">
-                <img src={data.img} alt=""  className='mx-auto d-block w-100'/>
+                <img src={data.img} alt={data.name}  className='mx-auto d-block w-100'/>
             </div>
             <div className="col-10 col-md-6 col-lg-5 col-xl-6 d-flex flex-column mx-auto p-2 mt-3">
-                <p>{data.description}</p>
+                <p className='fs-4'>{data.description}</p>
                 <p className='mb-5 fs-4'>${data.price}</p>
                 <span>Tiene {data.stock} productos disponibles</span>
                 <div className="col mx-auto mt-3">

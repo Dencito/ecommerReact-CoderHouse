@@ -5,6 +5,14 @@
 html{
     scroll-behavior: smooth;
 }
+body {
+    background-color: #d8d8d8;
+    overflow-x: hidden;
+}
+
+.menu {
+    z-index: 10000;
+}
 
 ::-webkit-scrollbar{
     width: 12px;
@@ -24,15 +32,23 @@ html{
 .item {
     text-decoration: none;
     color: #000000;
+    filter: blur(1px);
+    transition: 0.5s;
 }
+
 .item:hover {
-    color: #ffffff;
-    background-color: rgb(190, 190, 190);
+    background-color: rgba(65, 100, 109, 0.342);
+    box-shadow: 5px 5px 15px #ff04827e;
+    filter: blur(0);
+    transform: scale(0.95);
     transition: all .4s;
+
 }
+
 .item span:nth-child(3){
-    font-weight: bold;
-    color: #66ff00;
+    font-weight: 900;
+    font-size: 19px;
+    color: #ff0080;
 }
 
 .border-circle-btn {
@@ -41,4 +57,19 @@ html{
     border-radius: 50%;
     padding: 3px;
 
+}
+.btn-success {
+    background-color: #ff0482cc;
+    font-size: 18px;
+    transition:  all .4s;
+}
+
+.btn-success:hover {
+    background-color: #ff77bb;
+    transition:  all .4s;
+}
+
+.btn-success:focus {
+    background-color: #ff77bb;
+    transition:  all .4s;
 }
