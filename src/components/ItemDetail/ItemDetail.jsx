@@ -18,7 +18,7 @@ const ItemDetail = ({data=[]}) => {
   return (
     <div className='container  mb-5 pb-5'>
         <div className="row mt-5 pt-4">
-            <h1 className='pt-5 text-center mb-5'>Detalle</h1>
+            <h1 className='pt-5 text-center mb-5 text-decoration-underline'>{data.name}</h1>
         </div>
         <div className="row mx-auto d-flex flex-wrap">
             <div className="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-3 mx-auto">

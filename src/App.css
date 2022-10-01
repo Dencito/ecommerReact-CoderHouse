@@ -25,14 +25,14 @@ body {
 }
 ::-webkit-scrollbar-thumb{
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #ff0482;
     background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent)
 }
 
 .item {
     text-decoration: none;
     color: #000000;
-    filter: blur(1px);
+    filter: blur(0.5px);
     transition: 0.5s;
 }
 
@@ -49,6 +49,7 @@ body {
     font-weight: 900;
     font-size: 19px;
     color: #ff0080;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
 .border-circle-btn {
@@ -67,6 +68,7 @@ body {
 .btn-success:hover {
     background-color: #ff77bb;
     transition:  all .4s;
+    box-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
 .btn-success:focus {

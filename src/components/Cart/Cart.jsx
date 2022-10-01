@@ -2,9 +2,34 @@ import React from 'react'
 import ItemCart from './ItemCart'
 import { useCartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
+import { serverTimestamp ,addDoc, collection, getFirestore } from 'firebase/firestore'
 
 const Cart = () => {
   const { cart, totalP, clear } = useCartContext();
+  const order = {
+    buyer: {
+      name: 'Denar',
+      email: 'denarpadilla.lionel@gmail.com',
+      tel: 1122334455,
+      address: 'av siempreviva 7..'
+    },
+    items: cart.map(product => ({id: product.id, name: product.name, price: product.price, qty: product.qty})),
+    date: serverTimestamp(),
+    total: totalP()
+  }
+
+  const generateOrder = () => {
+    console.log(order)
+    swal("Orden generada!", "Gracias por su compra!", "success");
+    const db = getFirestore()
+    const ordersCollection = collection(db, 'orders')
+    addDoc(ordersCollection, order)
+      .then(({id}) => console.log(id))
+      setTimeout(function(){
+        window.location.reload ()
+    }, 1500);
+  }
   if (cart.length === 0) {
     return (
       <>
@@ -19,8 +44,9 @@ const Cart = () => {
         cart.map(product => <ItemCart key={product.id} product= {product}/>)
       }
       <div className="d-flex justify-content-center align-items-center">
-      <p className='fw-bold fs-2 text-center'>Total: ${totalP()}</p>
-      <button onClick={()=>clear()} className='btn btn-danger fw-bold fs-5 text-center mb-3 py-1 ms-2'>Eliminar todo</button>
+        <button onClick={()=>generateOrder()} className='btn btn-dark fw-bold fs-5 text-center mb-3 py-1 me-2'>Generar orden</button>
+        <p className='fw-bold fs-2 text-center'>Total: ${totalP()}</p>
+        <button onClick={()=>clear()} className='btn btn-danger fw-bold fs-5 text-center mb-3 py-1 ms-2'>Eliminar todo</button>
       </div>
     </>
   )

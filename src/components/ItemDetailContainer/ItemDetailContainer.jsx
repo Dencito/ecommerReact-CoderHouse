@@ -6,6 +6,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true)
   const {detailId} = useParams();
 
   useEffect(()=>{
@@ -13,19 +14,18 @@ const ItemDetailContainer = () => {
     const queryDoc = doc(queryDb, 'Products', detailId );
     getDoc(queryDoc)
     .then(res => setData({id: res.id, ...res.data()}))
+    .then(res => setLoading(false))
   },[detailId])
 
-  /* useEffect(()=>{
-    const getData = new Promise(resolve => {
-      setTimeout(()=>{
-        resolve(Products)
-      }, 300)
-    });
-    getData.then(res => SetData(res.find(game => game.id === parseInt(detailId))));
-  }, [detailId]) */
-
   return (
-    <ItemDetail data={data}/>
+      <>
+      {
+        loading ?
+        <h3 className='ms-3 mt-5 pt-5'>Cargando detalles del juego...</h3>
+        :
+        <ItemDetail data={data}/>
+      }
+    </>
   )
 }
 

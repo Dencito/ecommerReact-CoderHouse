@@ -8,7 +8,7 @@ import { getFirestore, collection, getDocs, query, where } from 'firebase/firest
 const ItemListContainer = () => {
     const [data, setData] = useState([]);
     const {categoryId} = useParams();
-
+    const [loading, setLoading] = useState(true)
     
   useEffect(()=>{
     const queryDb = getFirestore();
@@ -17,23 +17,13 @@ const ItemListContainer = () => {
       const queryFilter = query(queryCollection,where('category', '==', categoryId))
       getDocs(queryFilter)
         .then(res => setData(res.docs.map(prod => ({id: prod.id, ...prod.data()}) )/* {id: res.id, ...res.data()} */))
+        .then(res => setLoading(false))
     } else {
       getDocs(queryCollection)
         .then(res => setData(res.docs.map(prod => ({id: prod.id, ...prod.data()}) )/* {id: res.id, ...res.data()} */))
+        .then(res => setLoading(false))
     }
   },[categoryId])
-/*     useEffect(()=>{
-        const getData = new Promise(resolve => {
-            setTimeout(()=>{
-                resolve(Products)
-            },2000)
-        });
-        if(categoryId){
-            getData.then(res => setData(res.filter(game => game.category === categoryId)))
-        } else {
-            getData.then(res => setData(res))
-        }
-    },[categoryId]) */
 
   return (
     <>
@@ -53,7 +43,13 @@ const ItemListContainer = () => {
           }
         })()}
       </h1>
-      <ItemList data={data} />
+
+      {
+        loading ?
+         <h3 className='ms-3'>Cargando juegos...</h3>
+         :
+         <ItemList data={data} />
+      }
     </>
   );
 }
