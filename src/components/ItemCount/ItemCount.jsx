@@ -16,18 +16,20 @@ const ItemCount = ({stock, initial, onAdd}) => {
     useEffect(()=> {
         setCount(parseInt(initial))
     },[initial])
+    if(stock>0){
+        return (
+            <>
+                <div className="d-flex justify-content-center align-items-center mb-2">
+                    <button disabled={count>=stock} onClick={()=>{Add()}} className='btn btn-primary mx-auto'>+</button>
+                    <span className='bg-dark text-white px-2 btn d-inline-block'>{count}</span>
+                    <button disabled={count===0} onClick={()=>{Reduce()}} className='btn btn-danger mx-auto'>-</button>
+                </div>
+                <button disabled={count===0} onClick={()=>{onAdd(count)}} className='btn btn-success d-inline-block mx-auto'>agregarAlCarrito</button>
+            </>
+          )
+    }
 
-    
-  return (
-    <>
-        <div className="d-flex justify-content-center align-items-center mb-2">
-            <button disabled={count===stock} onClick={()=>{Add()}} className='btn btn-primary mx-auto'>+</button>
-            <span className='bg-dark text-white px-2 btn d-inline-block'>{count}</span>
-            <button disabled={count===0} onClick={()=>{Reduce()}} className='btn btn-danger mx-auto'>-</button>
-        </div>
-        <button disabled={count===0} onClick={()=>{onAdd(count)}} className='btn btn-success d-inline-block mx-auto'>agregarAlCarrito</button>
-    </>
-  )
+
 }
 
 export default ItemCount

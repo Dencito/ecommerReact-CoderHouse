@@ -3,7 +3,7 @@ import ItemCart from './ItemCart'
 import { useCartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
-import { serverTimestamp ,addDoc, collection, getFirestore } from 'firebase/firestore'
+import { doc, serverTimestamp ,addDoc, collection, getFirestore,updateDoc, increment } from 'firebase/firestore'
 
 const Cart = () => {
   const { cart, totalP, clear } = useCartContext();
@@ -20,15 +20,24 @@ const Cart = () => {
   }
 
   const generateOrder = () => {
-    console.log(order)
+    /* console.log(order) */
     swal("Orden generada!", "Gracias por su compra!", "success");
     const db = getFirestore()
     const ordersCollection = collection(db, 'orders')
     addDoc(ordersCollection, order)
-      .then(({id}) => console.log(id))
+      /* .then(({id}) => console.log(id)) */
+
+    cart.forEach(async(item) => {
+      const shopgames = doc(db, "Products", item.id);
+      await updateDoc(shopgames, {
+          stock: increment(-item.qty)
+      });
       setTimeout(function(){
         window.location.reload ()
-    }, 1500);
+    }, 600);
+
+    
+  });
   }
   if (cart.length === 0) {
     return (
@@ -48,6 +57,7 @@ const Cart = () => {
         <p className='fw-bold fs-2 text-center'>Total: ${totalP()}</p>
         <button onClick={()=>clear()} className='btn btn-danger fw-bold fs-5 text-center mb-3 py-1 ms-2'>Eliminar todo</button>
       </div>
+      
     </>
   )
 }

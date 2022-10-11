@@ -25,10 +25,10 @@ const addGame = (item, qty) => {
   }
   
   const totalProducts = () => cart.reduce((acu, prodActual)=> acu + prodActual.qty, 0);
-  
+ /*  
   console.log(cart.length)
 
-  console.log('carrito', cart)
+  console.log('carrito', cart) */
 
   const clear = ()=>{ 
 
@@ -49,22 +49,7 @@ const addGame = (item, qty) => {
         swal('El carrito no se vacio!');
       }
     });
-
-    /* swal({
-      title: 'Vaciar Carrito',
-      text: '¿Estas seguro de vaciar el carrito?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, seguro',
-      cancelButtonText: 'No, no quiero'
-  }).then((result)=>{
-      if(result.isConfirmed){
-          setCart([])
-          swal('Carrito Vaciado','','success')
-      }
-  }) */
-  
-  /* setCart([]) */};
+};
 
   const isInCart = (id) => cart.find(game => game.id === id) ? true : false;
 

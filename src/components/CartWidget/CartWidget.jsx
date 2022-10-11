@@ -7,7 +7,7 @@ const cartWidget = () => {
 
   return (
     <>
-      <i className='fa fa-shopping-bag fs-2  me-1'></i>
+      <i className='fa fa-shopping-cart fs-2 me-1 text-dark'></i>
       <span className="fs-5 fw-bold me-2">{totalProducts() || ''}</span>
     </>
   )

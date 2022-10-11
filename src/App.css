@@ -75,3 +75,7 @@ body {
     background-color: #ff77bb;
     transition:  all .4s;
 }
+
+.img-cart {
+    width: 150px;
+}
