@@ -34,6 +34,7 @@ const Cart = () => {
       });
       setTimeout(function(){
         window.location.reload ()
+        window.location = '/';
     }, 600);
 
     
